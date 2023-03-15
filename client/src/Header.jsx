@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
       <header className="flex justify-between">
-        <a href="" className="flex items-center gap-1">
+        <Link to={'/'} className="flex items-center gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -27,7 +27,7 @@ const Header = () => {
             />
           </svg>
           <span className="font-bold text-xl">Airbnb</span>
-        </a>
+        </Link>
         <div className="flex border border-gray-300 rounded-full py-2 px-4 gap-2 shadow-md shadow-gray-300">
           <div>Anywhere</div>
           <div className="border-l broder-gray-300"></div>
@@ -52,7 +52,7 @@ const Header = () => {
           </button>
         </div>
 
-        <Link to='/login' className="flex iterms-center border border-gray-300 rounded-full py-2 px-4 gap-2">
+        <Link to={user? '/account':'/login'} className="flex iterms-center border border-gray-300 rounded-full py-2 px-4 gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
