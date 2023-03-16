@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../UserContext'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import axios from 'axios';
+import PlacesPage from './PlacesPage';
+import ProfilePage from './ProfilePage';
 
 
 
@@ -23,7 +25,7 @@ const AccountPage = () => {
         setRedirect ('/');
     }
 
-    if (ready && !user) {
+    if (ready && !user && !redirect) {
         return <Navigate to={'/login'}/>
     }
 
@@ -46,13 +48,8 @@ const AccountPage = () => {
                 <Link className={linkClass('bookings')} to={'/account/bookings'}>My bookings</Link>
                 <Link className={linkClass('places')} to={'/account/places'}>My accommodations</Link>
             </nav> 
-            {subpage === 'profile' && (
-                <div className="text-center max-w-lg mx-auto">
-                    Logged in as {user?.name} ({user?.email}) <br />
-                    <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
-
-                </div>
-            )}
+            {subpage === 'profile' && <ProfilePage user={user} logout={logout}/>}
+            {subpage==='places' && <PlacesPage />}
         </div>
     )
 }
